@@ -34,7 +34,7 @@ function Welcome() {
   const [content, setContent] = useState();
 
   useEffect(() => {
-    fetch("/main.html")
+    fetch(`${import.meta.env.BASE_URL}main.html`)
       .then((x) => x.text())
       .then((text) => setContent(text));
   }, []);

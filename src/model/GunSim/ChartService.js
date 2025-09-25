@@ -69,14 +69,14 @@ let accuracyData;
 let getTTK;
 
 async function loadWASM() {
-  const stream = await fetch("/release.wasm");
+  const stream = await fetch(`${import.meta.env.BASE_URL}release.wasm`);
   const wasm = await WebAssembly.compileStreaming(stream);
   return instantiate(wasm, {});
 }
 
 export function loadDependencies() {
   // load accuracy into buffer
-  const accuracy = fetch("/accuracyLookup.dat")
+  const accuracy = fetch(`${import.meta.env.BASE_URL}accuracyLookup.dat`)
     .then((response) => response.arrayBuffer())
     .then((buffer) => {
       accuracyData = new Uint16Array(buffer);

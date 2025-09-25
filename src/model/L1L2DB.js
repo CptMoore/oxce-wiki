@@ -58,7 +58,7 @@ class L1L2DB {
             null, // get the whole object
             async () => this.db.config.get("config"),
             async () => {
-                const config = await loadJSON("/config.json");
+                const config = await loadJSON(`${import.meta.env.BASE_URL}config.json`);
                 config.lastFetched = Date.now();
                 await this.db.config.clear();
                 const row = {key: "config", ...config };
